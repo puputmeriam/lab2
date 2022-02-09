@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Biodata;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BiodataController extends Controller
 {
@@ -14,6 +15,9 @@ class BiodataController extends Controller
      */
     public function index()
     {
+        // if (Auth::users()->isadmin !=1){
+        //     abort(403);
+        // }
         $data=[
             'title'=>'List Siswa',
             'siswas'=> Biodata::orderBy('created_at','desc')->get(),
